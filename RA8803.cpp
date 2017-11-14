@@ -64,12 +64,13 @@ template<typename Bus>
 void RA8803<Bus>::clear()
 {
 	uint8_t reg;
-//	Bus::writeCmd(0xe0, 0x00);
-//	Bus::readCmd(0xf0,reg);
-//	reg &= 0xf7;
-//	reg |= 0x08;
-//	Bus::writeCmd(0xf0, reg);
-
+  #if 0 /*HW clear / fill not needed with framebuffer*/
+	Bus::writeCmd(0xe0, 0x00);
+	Bus::readCmd(0xf0,reg);
+	reg &= 0xf7;
+	reg |= 0x08;
+	Bus::writeCmd(0xf0, reg);
+  #endif
   memset(framebuffer, 0, 1920);
  
 	delay(1);
@@ -79,11 +80,13 @@ template<typename Bus>
 void RA8803<Bus>::fill()
 {
 	unsigned char reg;
-//	Bus::writeCmd(0xe0, 0xff);
-//	Bus::readCmd(0xf0,reg);
-//	reg &= 0xf7;
-//	reg |= 0x08;
-//	Bus::writeCmd(0xf0, reg);
+  #if 0 /*HW clear / fill not needed with framebuffer*/
+	Bus::writeCmd(0xe0, 0xff);
+	Bus::readCmd(0xf0,reg);
+	reg &= 0xf7;
+	reg |= 0x08;
+	Bus::writeCmd(0xf0, reg);
+  #endif
 
   memset(framebuffer, 0xff, 1920);
  

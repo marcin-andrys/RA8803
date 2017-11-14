@@ -101,7 +101,8 @@ class RA8803 : public Adafruit_GFX
 
 	private:
 		uint32_t xDimension, yDimension;
-		uint8_t framebuffer[1920*10];
+    //TODO Better buffer allocation
+		uint8_t framebuffer[1920];
 };
 
 

@@ -78,7 +78,7 @@
 #define LCD_TPXR_VALUE  0x80
 #define LCD_TPYR_VALUE  0x80
 #define LCD_TPZR_VALUE  0x00
-#define LCD_LCCR_VALUE  0x00
+#define LCD_LCCR_VALUE  0x00 // max contrast (DAC is inverted)
 #define LCD_APSR_VALUE  0x10
 #define LCD_ADSR_VALUE  0x80
 #define LCD_WCCR_VALUE  0xA8
@@ -104,6 +104,7 @@ class RA8803 : public Adafruit_GFX
     //TODO Better buffer allocation
 		uint8_t framebuffer[1920];
 };
+
 
 
 #endif /* RA8803_HPP_ */

@@ -8,17 +8,17 @@
 #include "Arduino.h"
 #include "LcdBus.hpp"
 
-int LcdBus::d0 = 2;
-int LcdBus::d1 = 3;
+int LcdBus::d0 = 12;
+int LcdBus::d1 = 5;
 int LcdBus::d2 = 4;
-int LcdBus::d3 = 5;
+int LcdBus::d3 = 2;
 
-int LcdBus::rst = 6;
-int LcdBus::rd = 7;
-int LcdBus::rs = 8;
-int LcdBus::wr = 9;
-int LcdBus::cs = 10;
-int LcdBus::busy = 11;
+int LcdBus::rst = 0;
+int LcdBus::rd = 13;
+int LcdBus::rs = 16;
+int LcdBus::wr = 14;
+int LcdBus::cs = 0;
+int LcdBus::busy = 0;
 
 void LcdBus::pinConfig(int d0, int d1, int d2, int d3, int rst, int rd, int rs,
 		int wr, int cs, int busy)
@@ -44,19 +44,20 @@ void LcdBus::init()
 	pinMode(d2, OUTPUT);
 	pinMode(d3, OUTPUT);
 
-	pinMode(rst, OUTPUT);
+	//pinMode(rst, OUTPUT);
 	pinMode(rd, OUTPUT);
 	pinMode(rs, OUTPUT);
 	pinMode(wr, OUTPUT);
-	pinMode(cs, OUTPUT);
-	pinMode(busy, INPUT);
+	//pinMode(cs, OUTPUT);
+	//pinMode(busy, INPUT);
 
 	busWrite(0x00, eHigh);
 	setCS();
 	setRD();
 	setWR();
 	setRS();
-  
+  delay(100);
+
 	setRST();
 	clrCS();
 	delay(100);

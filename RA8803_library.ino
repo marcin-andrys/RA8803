@@ -1,12 +1,22 @@
 #include "RA8803.hpp"
 #include "RA8803.cpp"
 
-RA8803<LcdBus> display(320,48);
+#include "Arduino.h"
 
+//RA8803<LcdBus> display(320,48);
+lcd_ra8803  display(320,48);
 uint32_t cnt;
 void setup()
 {
 
+  /*
+   * Minimal configuration:
+   * 100 -> means pin is not used
+   * CS -> pull down
+   * RST -> should be connected or triggered externally
+   * BUSY not used
+   */
+  LcdBus::pinConfig(12, 5, 4, 2, 100, 13, 16, 14, 100, 100);
   Serial.begin(115200);
   Serial.println("Initialization...");
 	display.init();

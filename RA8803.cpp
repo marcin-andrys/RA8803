@@ -6,6 +6,8 @@
  */
 #include "RA8803.hpp"
 
+using lcd_ra8803 = RA8803<LcdBus>; 
+
 template<typename Bus>
 RA8803<Bus>::RA8803(uint32_t dimX, uint32_t dimY): Adafruit_GFX(320, 48)
 {

@@ -17,8 +17,8 @@ public:
 
   static void init(void);
 
-	static void pinConfig(int d0 = 2, int d1 = 3, int d2 = 4, int d3 = 5, int rst = 6,
-			int rd = 7, int rs = 8, int wr = 9, int cs = 10, int busy = 11);
+	static void pinConfig(int d0, int d1, int d2, int d3, int rst,
+			int rd, int rs, int wr, int cs, int busy);
 
 	static void writeCmd(uint8_t reg, uint8_t value);
 
@@ -46,21 +46,23 @@ private:
 	/* Chip select line */
 	static void setCS()
 	{
-		digitalWrite(cs, LOW);
+		//digitalWrite(cs, LOW);
 	}
 	static void clrCS()
 	{
-    digitalWrite(cs, LOW);  
+    //digitalWrite(cs, LOW);  
 	}
 
 	/* Reset line */
 	static void setRST()
 	{
+    /* not needed if reset connected externally */
 		digitalWrite(rst, HIGH);
 	}
 	static void clrRST()
 	{
-		//digitalWrite(rst, LOW);
+   /* not needed if reset connected externally */
+		digitalWrite(rst, LOW);
 	}
 
 	/* Read line */
